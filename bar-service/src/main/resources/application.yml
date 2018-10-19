@@ -1,0 +1,31 @@
+info:
+  name: bar-service
+
+server:
+  port: 0
+  servlet:
+      context-path: /
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    lease-expiration-duration-in-seconds: 10
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:7777}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['*']
