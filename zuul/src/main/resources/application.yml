@@ -4,16 +4,22 @@ info:
 server:
   port: 9000
 
+
 eureka:
   instance:
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    lease-expiration-duration-in-seconds: 1
+    lease-renewal-interval-in-seconds: 2
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:7777/eureka/
+    registry-fetch-interval-seconds: 1
+
 zuul:
   sensitive-headers: Cookie,Set-Cookie
+
 
 #logging:
 #  level:
