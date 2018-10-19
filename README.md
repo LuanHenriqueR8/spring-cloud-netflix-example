@@ -17,3 +17,7 @@
 	- http://localhost:{random.port}/
 - with zuul
 	- http://localhost:9000/bar-service
+- hystrix-dashboard
+	- http://localhost:{random.port}/hystrix
+- hystrix-stream
+	- http://localhost:{random.port}/actuator/hystrix.stream
